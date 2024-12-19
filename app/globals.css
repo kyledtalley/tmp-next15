@@ -10,8 +10,8 @@
     --primary-foreground: #333333; /* Dark gray for text on white */
     --secondary: #ff4d4f; /* Bright red */
     --secondary-foreground: #ffffff; /* White for text on red */
-    --background: #ffffff; /* Background default */
-    --foreground: #333333; /* Text default */
+    --background: #f0f0f0; /* Light gray */
+  --foreground: #333333; /* Text default */
     --border: #e5e7eb; /* Light gray border */
     --muted: #f3f4f6; /* Muted background gray */
     --muted-foreground: #6b7280; /* Muted text gray */
@@ -40,8 +40,8 @@
     --primary-foreground: #ffffff; /* White text */
     --secondary: #ff4d4f; /* Keep red the same */
     --secondary-foreground: #ffffff;
-    --background: #181818; /* Dark background */
-    --foreground: #e5e7eb; /* Light gray text */
+    --background: #181818; /* Dark mode background */
+  --foreground: #e5e7eb; /* Light gray text */
     --border: #374151; /* Darker border */
     --muted: #1f2937; /* Muted dark gray */
     --muted-foreground: #9ca3af;
