@@ -52,6 +52,7 @@
 
   /* Body background and text */
   body {
+    font-family: Arial, sans-serif;
     @apply bg-background text-foreground;
   }
 

@@ -11,7 +11,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/layout/sidebar"
 
-// Menu items.
 const items = [
   {
     title: "Home",

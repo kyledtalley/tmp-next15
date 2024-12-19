@@ -29,16 +29,13 @@ export default NextAuth({
       return true; 
     },
     async redirect({ url, baseUrl }) {
-      // Ensure redirect URLs are safe
       if (url.startsWith(baseUrl)) return url;
       return baseUrl;
     },
     async session({ session, user }) {
-      // Add custom session properties here if needed
       return session;
     },
     async jwt({ token, user, account }) {
-      // Handle JWT token updates here if needed
       return token;
     },
   },
