@@ -1,12 +1,12 @@
 
 "use client"
 import Image from "next/image";
-import { Card } from "@/components/ui/card";
-import { Alert } from "@/components/ui/alert";
-import { Dialog } from "@/components/ui/dialog";
+import { Card } from "@/components/ui/layout/card";
+import { Alert } from "@/components/ui/feedback/alert";
+import { Dialog } from "@/components/ui/feedback/dialog";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/buttons/button'
 import { Github, Key } from 'lucide-react'
 
 
@@ -14,14 +14,14 @@ import { FcGoogle } from 'react-icons/fc'
 
 export default function Home() {
   return (
-   
+
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
-          
+
 
           width={180}
           height={38}

@@ -24,9 +24,9 @@ export default NextAuth({
         if (extendedProfile.email_verified && extendedProfile.email?.endsWith("@example.com")) {
           return true;
         }
-        return false; // Return false if the condition is not met
+        return false;
       }
-      return true; // Allow sign-in for other providers
+      return true; 
     },
     async redirect({ url, baseUrl }) {
       // Ensure redirect URLs are safe
@@ -45,8 +45,8 @@ export default NextAuth({
   pages: {
     signIn: "/auth/signin",
     signOut: "/auth/signout",
-    error: "/auth/error", // Error code passed in query string as ?error=
-    verifyRequest: "/auth/verify-request", // (used for check email message)
-    newUser: "/auth/new-user", // New users will be directed here on first sign in (leave the property out if not of interest)
+    error: "/auth/error", 
+    verifyRequest: "/auth/verify-request", 
+    newUser: "/auth/new-user", 
   },
 });
