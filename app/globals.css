@@ -5,33 +5,6 @@
 /* Base styles and variables */
 @layer base {
   :root {
-    /* Color variables */
-    --primary: #ffffff; /* White */
-    --primary-foreground: #333333; /* Dark gray for text on white */
-    --secondary: #ff4d4f; /* Bright red */
-    --secondary-foreground: #ffffff; /* White for text on red */
-    --background: #f0f0f0; /* Light gray */
-  --foreground: #333333; /* Text default */
-    --border: #e5e7eb; /* Light gray border */
-    --muted: #f3f4f6; /* Muted background gray */
-    --muted-foreground: #6b7280; /* Muted text gray */
-    --radius: 0.5rem; /* Default border radius */
-
-    /* Accent and other colors */
-    --accent: var(--secondary);
-    --accent-foreground: var(--primary-foreground);
-    --destructive: #b91c1c; /* Darker red for destructive actions */
-    --destructive-foreground: var(--primary);
-
-    /* GlowBox colors */
-    --glow-primary: rgba(255, 255, 255, 0.8); /* Light glow */
-    --glow-secondary: rgba(255, 77, 79, 0.7); /* Red glow */
-    --glow-accent: rgba(255, 150, 150, 0.6); /* Softer red accent */
-
-    /* Misc */
-    --ring: var(--secondary);
-    --card: var(--primary);
-    --card-foreground: var(--primary-foreground);
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -42,20 +15,7 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  /* Dark mode variables */
   .dark {
-    --primary: #181818; /* Dark background */
-    --primary-foreground: #ffffff; /* White text */
-    --secondary: #ff4d4f; /* Keep red the same */
-    --secondary-foreground: #ffffff;
-    --background: #181818; /* Dark mode background */
-  --foreground: #e5e7eb; /* Light gray text */
-    --border: #374151; /* Darker border */
-    --muted: #1f2937; /* Muted dark gray */
-    --muted-foreground: #9ca3af;
-    --ring: var(--secondary);
-    --card: var(--background);
-    --card-foreground: var(--foreground);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -65,38 +25,5 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-
-  /* Body background and text */
-  body {
-    font-family: Arial, sans-serif;
-    @apply bg-background text-foreground;
-  }
-
-  /* Add global border color if needed */
-  * {
-    border-color: var(--border);
-  }
 }
 
-/* GlowBox animation */
-.glowBox {
-  position: absolute;
-  top: calc(50% - 20px);
-  left: calc(50% - 20px);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--glow-primary);
-  box-shadow:
-    0 0 60px 30px var(--glow-primary),
-    0 0 100px 60px var(--glow-secondary),
-    0 0 140px 90px var(--glow-accent);
-}
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
