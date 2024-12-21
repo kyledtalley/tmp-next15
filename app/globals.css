@@ -2,28 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles and variables */
 @layer base {
   :root {
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 35 15% 90%; /* Light cream */
+    --foreground: 30 10% 20%; /* Deep brown for text */
+    --primary: 30 25% 45%; /* Rich mocha for highlights */
+    --primary-foreground: 35 15% 90%; /* Light cream for text on primary */
+    --secondary: 30 15% 35%; /* Soft latte shade */
+    --secondary-foreground: 35 15% 90%; /* Light cream for text on secondary */
+    --accent: 35 50% 70%; /* Warm beige for accents */
+    --accent-foreground: 30 10% 20%; /* Deep brown for text on accents */
+    --border: 30 10% 75%; /* Light beige for subtle borders */
+    --muted: 30 15% 85%; /* Muted cream for backgrounds */
+    --muted-foreground: 30 10% 35%; /* Muted brown for text on muted backgrounds */
+    --card: 30 20% 95%; /* Slightly brighter cream for cards */
+    --card-foreground: 30 10% 20%; /* Deep brown for text on cards */
+    --destructive: 0 65% 40%; /* Red for destructive actions */
+    --destructive-foreground: 35 15% 90%; /* Light cream for destructive text */
   }
 
   .dark {
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 30 15% 15%; /* Dark espresso */
+    --foreground: 35 15% 90%; /* Light cream for text */
+    --primary: 35 25% 50%; /* Warm cocoa */
+    --primary-foreground: 30 15% 15%; /* Dark espresso for text on primary */
+    --secondary: 30 15% 25%; /* Darker latte */
+    --secondary-foreground: 35 15% 90%; /* Light cream for text on secondary */
+    --accent: 30 25% 40%; /* Rich mocha for accents */
+    --accent-foreground: 35 15% 90%; /* Light cream for text on accents */
+    --border: 30 15% 25%; /* Dark mocha for borders */
+    --muted: 30 15% 20%; /* Subtle dark background */
+    --muted-foreground: 35 15% 80%; /* Softer cream for text */
+    --card: 30 15% 25%; /* Darker latte for cards */
+    --card-foreground: 35 15% 90%; /* Light cream for text on cards */
+    --destructive: 0 65% 40%; /* Red for destructive actions */
+    --destructive-foreground: 35 15% 90%; /* Light cream for destructive text */
   }
 }
-
