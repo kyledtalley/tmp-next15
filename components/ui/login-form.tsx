@@ -1,15 +1,17 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+"use client";
+
+import { signIn } from "next-auth/react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
     Card,
     CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@/components/ui/layout/card"
-import { Input } from "./input"
-
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/layout/card";
+import { Input } from "./input";
+import { Label } from "@/components/ui/label";
 
 export function LoginForm({
     className,
@@ -21,23 +23,31 @@ export function LoginForm({
                 <CardHeader className="text-center">
                     <CardTitle className="text-xl">Welcome back</CardTitle>
                     <CardDescription>
-                        Login with your Apple or Google account
+                        Login with your GitHub or Google account
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form>
                         <div className="grid gap-6">
                             <div className="flex flex-col gap-4">
-                                <Button variant="outline" className="w-full">
+                                <Button
+                                    variant="outline"
+                                    className="w-full"
+                                    onClick={() => signIn("github")}
+                                >
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                         <path
-                                            d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"
+                                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.49 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.18-1.11-1.49-1.11-1.49-.91-.63.07-.62.07-.62 1 .07 1.52 1.03 1.52 1.03.9 1.54 2.36 1.09 2.94.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.26.1-2.64 0 0 .84-.27 2.75 1.03A9.55 9.55 0 0 1 12 6.8c.85.004 1.7.116 2.5.34 1.9-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.68 0 3.83-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.16.59.68.49A10.02 10.02 0 0 0 22 12c0-5.52-4.48-10-10-10z"
                                             fill="currentColor"
                                         />
                                     </svg>
-                                    Login with Apple
+                                    Login with GitHub
                                 </Button>
-                                <Button variant="outline" className="w-full">
+                                <Button
+                                    variant="outline"
+                                    className="w-full"
+                                    onClick={() => signIn("google")}
+                                >
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                         <path
                                             d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
@@ -93,5 +103,5 @@ export function LoginForm({
                 and <a href="#">Privacy Policy</a>.
             </div>
         </div>
-    )
+    );
 }

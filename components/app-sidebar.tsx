@@ -15,15 +15,17 @@ import {
 import { Home, Info, Coffee, MapPin } from "lucide-react";
 import Link from "next/link";
 
-export function AppSidebar() {
+interface AppSidebarProps {
+  className?: string;
+}
+
+export function AppSidebar({ className }: AppSidebarProps) {
   return (
-    <Sidebar>
-      {/* Sidebar Header */}
+    <Sidebar className={className}>
       <SidebarHeader>
         <h1 className="text-lg font-bold px-4 py-2">Java Bliss</h1>
       </SidebarHeader>
 
-      {/* Sidebar Content */}
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Navigation</SidebarGroupLabel>
@@ -53,11 +55,12 @@ export function AppSidebar() {
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
+            
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href="/about/locations">
+                  <Link href="/login">
                     <MapPin className="mr-2" />
-                    Locations
+                    Login
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -66,7 +69,6 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      {/* Sidebar Footer */}
       <SidebarFooter>
         <p className="text-sm text-center px-4 py-2">© 2024 Java Bliss</p>
       </SidebarFooter>

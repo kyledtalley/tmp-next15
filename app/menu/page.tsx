@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/buttons/button";
 import { Separator } from "@/components/ui/shared/separator";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 interface Option {
   label: string;
@@ -100,33 +105,6 @@ const menuSections = [
       },
     ],
   },
-  {
-    title: "Coffee Beans",
-    items: [
-      { name: "Arabica", basePrice: 12.0, options: [] },
-      { name: "Robusta", basePrice: 10.0, options: [] },
-      { name: "Holiday Blend", basePrice: 15.0, options: [] },
-      { name: "Blonde Roast", basePrice: 11.0, options: [] },
-      { name: "Dark Roast", basePrice: 13.0, options: [] },
-    ],
-  },
-  {
-    title: "Apparel",
-    items: [
-      {
-        name: "T-Shirts",
-        basePrice: 20.0,
-        options: [
-          { label: "Size", tags: ["S", "M", "L", "XL"], exclusive: true },
-          { label: "Color", tags: ["Black", "White", "Blue"], exclusive: true },
-          { label: "Quantity", default: { value: 1, max: 10 } },
-        ],
-      },
-      { name: "Hoodies", basePrice: 40.0, options: [] },
-      { name: "Mugs", basePrice: 10.0, options: [] },
-      { name: "Accessories", basePrice: 15.0, options: [] },
-    ],
-  },
 ];
 
 export default function MenuPage() {
@@ -138,7 +116,7 @@ export default function MenuPage() {
   const startNewDrink = (menuItem: MenuItem) => {
     setCurrentDrink({
       name: menuItem.name,
-      size: "Medium", // Default size
+      size: "Medium",
       syrups: [],
       addOns: [],
       price: menuItem.basePrice,
@@ -216,86 +194,78 @@ export default function MenuPage() {
         </div>
       ))}
 
-      {currentDrink && (
-        <div className="p-4 bg-gray-100 rounded-lg space-y-4">
-          <h2 className="text-xl font-bold">Current Drink: {currentDrink.name}</h2>
-          <p>Size: {currentDrink.size}</p>
-          <div>
-            <h3 className="text-lg font-bold">Select Size</h3>
-            <div className="flex gap-2">
-              {["Small", "Medium", "Large"].map((size) => (
-                <button
-                  key={size}
-                  className={`px-3 py-1 border rounded ${
-                    currentDrink.size === size ? "bg-blue-500 text-white" : "bg-gray-200"
-                  }`}
-                  onClick={() => selectSize(size)}
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-bold">Add Syrup</h3>
-            <div className="flex gap-2">
-              {["Vanilla", "Caramel", "Hazelnut", "Chocolate", "White Chocolate"].map((flavor) => (
-                <button
-                  key={flavor}
-                  className={`px-3 py-1 border rounded ${
-                    selectedSyrup === flavor ? "bg-blue-500 text-white" : "bg-gray-200"
-                  }`}
-                  onClick={() => setSelectedSyrup(flavor)}
-                >
-                  {flavor}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {selectedSyrup && (
-            <div>
-              <h3 className="text-lg font-bold">Syrup Intensity</h3>
-              <div className="flex gap-2">
-                {["Light", "Regular", "Bold"].map((intensity) => (
-                  <button
-                    key={intensity}
-                    className={`px-3 py-1 border rounded ${
-                      selectedIntensity === intensity ? "bg-blue-500 text-white" : "bg-gray-200"
-                    }`}
-                    onClick={() => setSelectedIntensity(intensity as "Light" | "Regular" | "Bold")}
-                  >
-                    {intensity}
-                  </button>
-                ))}
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline">View Current Drink</Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-80">
+          {currentDrink ? (
+            <div className="space-y-4">
+              <h2 className="text-xl font-bold">Current Drink: {currentDrink.name}</h2>
+              <p>Size: {currentDrink.size}</p>
+              <div>
+                <h3 className="text-lg font-bold">Size</h3>
+                <div className="flex gap-2">
+                  {["Small", "Medium", "Large"].map((size) => (
+                    <button
+                      key={size}
+                      className={`px-3 py-1 border rounded ${
+                        currentDrink.size === size ? "bg-blue-500 text-white" : "bg-gray-200"
+                      }`}
+                      onClick={() => selectSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <Button onClick={addSyrup} disabled={!selectedIntensity}>
-                Add Syrup
-              </Button>
-            </div>
-          )}
 
-          {currentDrink.syrups.length > 0 && (
-            <div>
-              <h3 className="text-lg font-bold">Current Syrups</h3>
-              <ul>
-                {currentDrink.syrups.map((syrup, idx) => (
-                  <li key={idx} className="flex justify-between items-center">
-                    <span>
-                      {syrup.flavor} ({syrup.intensity}) - ${syrup.price.toFixed(2)}
-                    </span>
-                    <Button onClick={() => removeSyrup(syrup.flavor)}>Remove</Button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+              <div>
+                <h3 className="text-lg font-bold">Add Syrup</h3>
+                <div className="flex gap-2">
+                  {["Vanilla", "Caramel", "Hazelnut", "Chocolate", "White Chocolate"].map((flavor) => (
+                    <button
+                      key={flavor}
+                      className={`px-3 py-1 border rounded ${
+                        selectedSyrup === flavor ? "bg-blue-500 text-white" : "bg-gray-200"
+                      }`}
+                      onClick={() => setSelectedSyrup(flavor)}
+                    >
+                      {flavor}
+                    </button>
+                  ))}
+                </div>
+                {selectedSyrup && (
+                  <div>
+                    <h3 className="text-lg font-bold">Syrup Intensity</h3>
+                    <div className="flex gap-2">
+                      {["Light", "Regular", "Bold"].map((intensity) => (
+                        <button
+                          key={intensity}
+                          className={`px-3 py-1 border rounded ${
+                            selectedIntensity === intensity ? "bg-blue-500 text-white" : "bg-gray-200"
+                          }`}
+                          onClick={() => setSelectedIntensity(intensity as "Light" | "Regular" | "Bold")}
+                        >
+                          {intensity}
+                        </button>
+                      ))}
+                    </div>
+                    <Button onClick={addSyrup} disabled={!selectedIntensity}>
+                      Add Syrup
+                    </Button>
+                  </div>
+                )}
+              </div>
 
-          <h3 className="text-lg font-bold">Price: ${currentDrink.price.toFixed(2)}</h3>
-          <Button onClick={finalizeDrink}>Add to Order</Button>
-        </div>
-      )}
+              <h3 className="text-lg font-bold">Price: ${currentDrink.price.toFixed(2)}</h3>
+              <Button onClick={finalizeDrink}>Add to Order</Button>
+            </div>
+          ) : (
+            <p>No drink selected.</p>
+          )}
+        </PopoverContent>
+      </Popover>
 
       <div className="p-4 bg-gray-200 rounded-lg">
         <h2 className="text-xl font-bold">Your Order</h2>
@@ -313,3 +283,4 @@ export default function MenuPage() {
     </div>
   );
 }
+

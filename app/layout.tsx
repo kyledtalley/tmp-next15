@@ -20,12 +20,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SidebarProvider>
-          {/* Render the AppSidebar for all pages */}
-          <div className="flex">
-            <AppSidebar />
-            <main className="flex-1">
+          <div className="relative flex h-screen">
+            <AppSidebar className="fixed left-0 top-0 h-full w-[250px] transition-transform transform -translate-x-full lg:translate-x-0" />
+            <main className="flex-1 transition-all duration-300 lg:ml-[250px]">
               <SidebarTrigger />
-              {children}
+              <div className="max-w-screen-lg mx-auto p-4">{children}</div>
             </main>
           </div>
           <Dialog />
