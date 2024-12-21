@@ -1,7 +1,6 @@
-"use client"
-import type { Metadata } from "next";
+"use client";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Sidebar, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Dialog } from "@/components/ui/feedback/dialog";
 import "./globals.css";
@@ -16,18 +15,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SidebarProvider>
-          <Sidebar />
-          <main>
-            <SidebarTrigger />
-            {children}
-          </main>
+          {/* Render the AppSidebar for all pages */}
+          <div className="flex">
+            <AppSidebar />
+            <main className="flex-1">
+              <SidebarTrigger />
+              {children}
+            </main>
+          </div>
           <Dialog />
         </SidebarProvider>
       </body>
